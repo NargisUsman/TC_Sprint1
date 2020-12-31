@@ -1,7 +1,7 @@
-@regression
+@regression @sanity
 Feature: Banking
 
-  @sanity
+
   Scenario: Verify teacher can add only 3 credit cards under My Credit Cards in My Accounts
 
     When I type my email sasha@mail.ru

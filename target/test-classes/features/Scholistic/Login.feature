@@ -26,20 +26,46 @@ Feature: Login
      And I select Student Name: Harry
      And I select Item number: 111
      And I click on ADD button
-    Then I verify the Expected error msg: Please enter a valid item number
+    Then I verify the Expected error msg: Please enter a valid item number.
 
   Scenario:  Verify YTO-By Flyer jumper
 
     #When I login
     When I go to Enter Orders
      And I select YOUR TEACHER ORDER
-     And I go to BY FLYER tab
-     And I click on Price-QTY box
-    Then I verify Teacher sees a jumper right above the box with message:
-     And I verify Heading - IMPORTANT
-     And I verify Message - All student paper flyer orders MUST be entered in the Student Flyer Orders tab.
+     And I go to BY FLYER tab and click on Price-QTY box
+    Then I verify Teacher sees a jumper right above the box with heading: IMPORTANT
+     And I verify Teacher sees a jumper right above the box with message: All student paper flyer orders MUST be entered in the Student Flyer Orders tab.
 
-    When I enter data in the clicked Price-QTY box
-     And I click on X on the jumper.
+    When I enter 1 in the clicked Price-QTY box and click on X on the jumper
      And I click on another Price-QTY box
-    Then I verify Teacher does NOT see any jumper.
+    Then I verify Teacher does NOT see any jumper
+
+  Scenario:  Verify teacher can add multiple books for a student in SFO
+
+     #When I login
+    When I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select Student Name: Harry
+     And I select Item numbers and Qty
+    Then Verify correct student name, item number added under SFO
+     And I click on Review Cart
+     And Verify if correct Student-total amount, items and quantity and SFO Total
+
+  Scenario:  Verify teacher can add multiple books for multiple students in SFO
+
+    #When I login
+    When I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select student name, Item numbers and Qty
+    Then Verify correct student Name, Qty and Item number added under SFO
+
+  Scenario:  Verify zero tax for only SFO order in the checkout
+
+    #When I login
+    When I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select student name, Item numbers and Qty
+     And I click on Proceed to CheckOut
+    Then I verify the tax amount is: $0.00
+

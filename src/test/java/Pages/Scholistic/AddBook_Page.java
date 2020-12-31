@@ -38,7 +38,6 @@ public class AddBook_Page  extends BasePage {
     }
 
     public void clickOnPopUp() {
-        //mouseHover(popUp);
         clickThis(popUp);
         sleep();
     }

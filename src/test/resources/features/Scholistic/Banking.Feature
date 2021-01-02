@@ -27,3 +27,43 @@ Feature: Banking
      And I click save
      And I click add new Card
     Then I verify the 'You can only store three credit cards' error msg
+
+ Scenario: TC12 - Verify zero tax for SFO-YTO orders in the checkout for teacher with non-tax state school
+
+    When I click Sign In
+     And type email address username 'mmjmmkju@gmail.com'
+     And type password 'poiu0987'
+     And click Sign in
+     And I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select on student name, Item numbers and Qty
+    Then I click Your Teacher Order and click By Flyer
+     And I enter 3 in the clicked Price-QTY box and click Review Cart
+     And I click on Proceed to CheckOut
+    Then Verify if Your Estimated Tax is zero for non-tax State school
+
+ Scenario: TC15 - Verify user can place an order by adding a new credit card
+
+   When I click Sign In
+    And type email address username 'zxcza@gmail.com'
+    And type password 'poiu0987'
+    And click Sign in
+    And I click the popUp
+    And I go to Enter Orders
+    And I select Student Flyer Orders
+    And I select the student name, Item numbers and Qty
+    And I click on Proceed to CheckOut
+    And click continue checkout
+    And click Ship To MySchool
+    And click Select Payment Method
+    And enter a new credit card number '4222222222222'
+    And click enter expiration date
+    And enter CVN code '345'
+    And enter first name 'Zhenya'
+    And enter last name 'Kirova'
+    And type address1 '443 Broadway ave'
+    And enter zipcode '10012'
+    And enter phone number '4433222345'
+    And click CheckOut and submit
+    And Verify if Thank you message is displayed
+   Then Verify if Order Receipt Reference number is displayed

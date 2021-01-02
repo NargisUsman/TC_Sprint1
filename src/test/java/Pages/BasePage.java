@@ -3,9 +3,7 @@ package Pages;
 import DriverWrapper.Web;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -35,6 +33,15 @@ public class BasePage {
 
     public void waitMin(){
         Web.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
+    }
+
+    public void waitUntilClickable(By locator){
+        WebDriverWait wait = new WebDriverWait(Web.getDriver(),10);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));}
+
+    public void waitUntilElementVisible(By locator){
+        WebDriverWait wait = new WebDriverWait(Web.getDriver(),10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void sleep() {

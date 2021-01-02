@@ -73,3 +73,23 @@ Feature: Login
      And I click on Proceed to CheckOut
     Then I verify the tax amount is: $0.00
 
+  Scenario: TC10 - Verify user can delete item on Cart page
+
+    When I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select on student name, Item numbers and Qty
+    Then Get the total for student and total for the item
+     And I delete first item
+     And Verify the total amount is changed after deleting the item
+
+
+  Scenario: TC13 - Verify tax is present for SFO-YTO orders in the checkout for teacher with tax state school
+
+    When I go to Enter Orders
+     And I select Student Flyer Orders
+     And I select on student name, Item numbers and Qty
+    Then I click Your Teacher Order and click By Flyer
+     And I enter 1 in the clicked Price-QTY box and click Review Cart
+     And I click on Proceed to CheckOut
+     And Verify if there tax greater than zero
+

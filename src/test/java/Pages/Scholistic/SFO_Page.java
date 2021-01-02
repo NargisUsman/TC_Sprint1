@@ -25,6 +25,7 @@ public class SFO_Page extends BasePage {
     By qtyBox2 = By.xpath("(//input[@value='1'])[3]");
     By qtyBox4 = By.xpath("(//input[@value='1'])[4]");
     By qtyBox5 = By.xpath("(//input[@value='1'])[5]");
+    By qtyBox6 = By.xpath("(//input[@value='1'])[6]");
     By closeQTYBox = By.xpath("(//i[@class='fa fa-times-circle remove'])[1]");
     By closeYesButton = By.xpath("(//button[@class='grey removeYes'])[1]");
 
@@ -82,7 +83,7 @@ public class SFO_Page extends BasePage {
 
     public void clickReview() {
         waitASec();
-        scrollDown(100);
+        scrollDown(250);
         clickThis(reviewButton);
     }
 
@@ -114,6 +115,56 @@ public class SFO_Page extends BasePage {
         enterThis(qtyBox4, "4");
         sleep();
         enterThis(qtyBox5, "10");
+
+    }
+
+    public void selectOnStudentNameItemAndQty() {
+        scrollDown(350);
+        waitASec();
+        enterThis(studentName, "Harry");
+        enterThis(itemNumber, "17S5");
+        clickThis(addButton);
+        moveToElement(itemNumber);
+        enterThis(itemNumber, "42J4");
+        clickThis(addButton);
+        sleep();
+        enterThis(studentName, "John");
+        enterThis(itemNumber, "20S5");
+        clickThis(addButton);
+        moveToElement(itemNumber);
+        enterThis(itemNumber, "19S5");
+        clickThis(addButton);
+        sleep();
+        enterThis(studentName, "Michael");
+        enterThis(itemNumber, "18S5");
+        clickThis(addButton);
+        moveToElement(itemNumber);
+        enterThis(itemNumber, "34B4");
+        clickThis(addButton);
+        sleep();
+        enterThis(qtyBox, "5");
+        enterThis(qtyBox1, "1");
+        sleep();
+        enterThis(qtyBox2, "2");
+        enterThis(qtyBox4, "2");
+        enterThis(qtyBox5, "4");
+        sleep();
+        enterThis(qtyBox6, "10");
+    }
+
+    public void selectItemQtyStudent() {
+        scrollDown(350);
+        waitASec();
+        enterThis(studentName, "Harry");
+        enterThis(itemNumber, "17S5");
+        clickThis(addButton);
+        sleep();
+        enterThis(studentName, "John");
+        enterThis(itemNumber, "20S5");
+        clickThis(addButton);
+        sleep();
+        enterThis(qtyBox, "1");
+        enterThis(qtyBox1, "2");
     }
 
 

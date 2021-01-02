@@ -10,6 +10,10 @@ import java.util.List;
 
 public class ReviewCart_Page extends BasePage {
 
+    public double total;
+    public double totalFirstItem;
+    public double amountAfterDeduction;
+
     By harryTotal = By.xpath("//li[@class='std-total-price stdPriceTotal']");
     By harrysTotal = By.xpath("(//li[@class='std-total-price stdPriceTotal'])[1]");
     By michaelTotal = By.xpath("//li[@class='std-total-price stdPriceTotal'])[3]");
@@ -21,7 +25,13 @@ public class ReviewCart_Page extends BasePage {
     By qtyBoxTotal1 = By.xpath("(//span[@class='total-qty stdPriceQty'])[1]");
     By qtyBoxTotal2 = By.xpath("(//span[@class='total-qty stdPriceQty'])[2]");
     By qtyBoxTotal3 = By.xpath("(//span[@class='total-qty stdPriceQty'])[3]");
-
+    By studentTotal = By.xpath("//li[@class='std-total-price stdPriceTotal']");
+    By totalForTheItem = By.xpath("//input[@name='dwfrm_cart_shipments_i0_items_i1_quantity']/preceding::i[@class='fa fa-times-circle remove']/preceding::td[@class='price']");
+    By deleteItem = By.xpath("//input[@name='dwfrm_cart_shipments_i0_items_i1_quantity']/preceding::i[@class='fa fa-times-circle remove']");
+    By yesButton = By.xpath("//button[@name='dwfrm_cart_shipments_i0_items_i0_deleteProduct']");
+    By checkout = By.xpath("//button[@value='Proceed to Checkout']");
+    By proceedToCheckout = By.xpath("//div[@class='col promo-msg']/following::button[@value='Proceed to Checkout']");
+    By continueCheckout = By.id("btn-continue-checkout");
 
     public void verifyStudentAndSFOTotal() {
         waitASec();
@@ -67,6 +77,38 @@ public class ReviewCart_Page extends BasePage {
         waitASec();
         mouseHover(proceedCheckOut);
         clickThis(proceedCheckOut);
+    }
+
+    public void deleteItem(){
+        waitUntilClickable(deleteItem);
+        clickThis(deleteItem);
+        moveToElement(yesButton);
+        clickThis(yesButton);
+    }
+
+    public void getTextFromStudentTotal(){
+        String totalForStudent = getText(studentTotal);
+        String totalWithOut$ = totalForStudent.substring(1);
+        total = Double.valueOf(totalWithOut$);
+
+
+        String totalItem = getText(totalForTheItem);
+        String totalItemWithOut$ = totalItem.substring(1);
+        totalFirstItem = Double.valueOf(totalItemWithOut$);
+
+        amountAfterDeduction = total-totalFirstItem;
+    }
+
+    public void proceedToCheckout() {
+        scrollUpTo(checkout);
+        waitUntilClickable(checkout);
+        clickThis(checkout);
+        waitUntilClickable(proceedToCheckout);
+        clickThis(proceedToCheckout);
+    }
+
+    public void continueCheckOut() {
+        clickThis(continueCheckout);
     }
 
 

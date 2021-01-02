@@ -83,6 +83,23 @@ public class AddBook_Page  extends BasePage {
         return getText(addedItem);
     }
 
+    public void signIn() { clickThis(signIn);}
+
+    public void typeEmail(String data) {
+        waitUntilElementVisible(emailBox);
+        enterThis(emailBox, data);
+    }
+
+    public void typePassword(String data) {
+        enterThis(passwBox, data);
+
+    }
+
+    public void clickSignIn() {
+        clickThis(signIn);
+        sleep();
+    }
+
 
 
 }

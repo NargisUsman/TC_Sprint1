@@ -16,6 +16,9 @@ public class YTO_Page extends BasePage {
     By errorMsg = By.xpath("//div[@class='info-modal-hd']");
     By errorContent = By.xpath("//div[@class='info-modal-content']");
     By closeJumper = By.xpath("//i[@class='fa fa-times info-modal-close']");
+    By qty = By.xpath("//input[@data-itemid='1S4']");
+    By reviewCart = By.xpath("//button[text()='Review Cart']");
+    By byFlyer = By.xpath("//ul[@class='yto-by-item-default']/preceding::a[text()='By Flyer']");
 
     public void enterOrders() {
         mouseHover(enterThis);
@@ -26,10 +29,14 @@ public class YTO_Page extends BasePage {
         clickThis(yto);
     }
 
+    public void clickYTO() {
+        mouseHover(enterThis);
+        clickThis(yto);
+    }
+
     public void clickPriceQty() {
         waitASec();
         scrollDown(350);
-        waitASec();
         clickThis(qtyBox1);
     }
 
@@ -62,5 +69,12 @@ public class YTO_Page extends BasePage {
 
     public boolean isErrorMsgDisplayed() {
         return isDisplayed(errorMsg);
+    }
+
+    public void addQuantityAndClickReview(String data) {
+        waitASec();
+        enterThis(qty, data);
+        scrollUpTo(reviewCart);
+        clickThis(reviewCart);
     }
 }

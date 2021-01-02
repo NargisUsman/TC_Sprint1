@@ -171,5 +171,73 @@ public class Login_stepDefinition {
         Assert.assertEquals(rwPage.verifyTax(), amount, "Tax amount is incorrect");
     }
 
+    @When("^I select on student name, Item numbers and Qty$")
+    public void selectStudentnameItemQty() {
+        sfPage.selectOnStudentNameItemAndQty();
+        sfPage.clickReview();
+    }
+
+    @Then("^Get the total for student and total for the item$")
+    public void getTotals(){
+        rPage.getTextFromStudentTotal();
+    }
+
+    @Then("^I delete first item$")
+    public void delete(){
+        rPage.deleteItem();
+    }
+
+
+    @Then("^Verify the total amount is changed after deleting the item$")
+    public void verifyTotal(){
+        Assert.assertEquals(rPage.amountAfterDeduction, rPage.total- rPage.totalFirstItem, "Wrong result after deleting the item");
+    }
+
+    @When("^I click Sign In$")
+    public void clickSignIn() {
+        aPage.signIn();
+    }
+
+    @When("^type email address username '(.+)'$")
+    public void email(String data) {
+        aPage.typeEmail(data);
+    }
+
+    @When("^type password '(.+)'$")
+    public void password(String data) {
+        aPage.typePassword(data);
+    }
+
+    @When("^click Sign in$")
+    public void signIn() {
+        aPage.clickSignIn();
+    }
+
+    @Then("^I click Your Teacher Order and click By Flyer$")
+    public void clickYTO() {
+        yPage.clickYTO();
+    }
+
+    @Then("^I enter (.+) in the clicked Price-QTY box and click Review Cart$")
+    public void addQuantityAndClickReview(String data) {
+        yPage.addQuantityAndClickReview(data);
+    }
+
+
+   //TC12
+    @Then("^Verify if Your Estimated Tax is zero for non-tax State school$")
+    public void VerifyTaxIsZero() {
+        rwPage.yourEstimateTax();
+        double taxNumber = rwPage.taxNum;
+        Assert.assertEquals(taxNumber, 0.0, "tax not equal to zero");
+    }
+  //TC13
+    @Then("^Verify if there tax greater than zero$")
+    public void verifyTax() {
+        rwPage.yourEstimateTax();
+        double taxNumber = rwPage.taxNum;
+        Assert.assertTrue(taxNumber > 0, "tax number is not greater than zero");
+    }
+
 
 }

@@ -1,7 +1,7 @@
-@regression
+@regression  @sanity
 Feature: Create New Account
 
- @sanity
+ @smoke
   Scenario: User can create a new teacher account in taxable state using Zip Code
 
      When I create new account
@@ -27,7 +27,7 @@ Feature: Create New Account
      And I verify same school address is present as selected while creating the account
          #refer snippets.
 
-  @sanity
+  @smoke
   Scenario: User can create a new teacher account in taxable state using School Search
 
     When I create new account
@@ -54,7 +54,7 @@ Feature: Create New Account
      And I verify same school address is present as selected while creating the account
          #refer snippets.
 
-    @sanity
+    @smoke
     Scenario: User can create a new teacher account in non-taxable state using Zip Code
 
       When I create new account

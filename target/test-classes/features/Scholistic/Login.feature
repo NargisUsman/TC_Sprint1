@@ -1,4 +1,4 @@
-@regression
+@regression @sanity
 Feature: Login
 
   Background:
@@ -18,7 +18,7 @@ Feature: Login
      Then I verify the item is added in Recommendations to Students Lists under My Lists
 
   @smoke
-  Scenario:  Verify teacher gets error for invalid item number in SFO (Student Flyer Order)
+  Scenario:  Verify teacher gets error for invalid item number in SFO (Student Flyer Order) TC6
 
     #When I login
     When I go to Enter Orders
@@ -28,7 +28,8 @@ Feature: Login
      And I click on ADD button
     Then I verify the Expected error msg: Please enter a valid item number.
 
-  Scenario:  Verify YTO-By Flyer jumper
+  @smoke
+  Scenario:  Verify YTO-By Flyer jumper TC11
 
     #When I login
     When I go to Enter Orders
@@ -41,7 +42,8 @@ Feature: Login
      And I click on another Price-QTY box
     Then I verify Teacher does NOT see any jumper
 
-  Scenario:  Verify teacher can add multiple books for a student in SFO
+  @smoke
+  Scenario:  Verify teacher can add multiple books for a student in SFO  TC7
 
      #When I login
     When I go to Enter Orders
@@ -52,7 +54,8 @@ Feature: Login
      And I click on Review Cart
      And Verify if correct Student-total amount, items and quantity and SFO Total
 
-  Scenario:  Verify teacher can add multiple books for multiple students in SFO
+  @smoke
+  Scenario:  Verify teacher can add multiple books for multiple students in SFO  TC8
 
     #When I login
     When I go to Enter Orders
@@ -60,7 +63,8 @@ Feature: Login
      And I select student name, Item numbers and Qty
     Then Verify correct student Name, Qty and Item number added under SFO
 
-  Scenario:  Verify zero tax for only SFO order in the checkout
+  @smoke
+  Scenario:  Verify zero tax for only SFO order in the checkout  TC9
 
     #When I login
     When I go to Enter Orders

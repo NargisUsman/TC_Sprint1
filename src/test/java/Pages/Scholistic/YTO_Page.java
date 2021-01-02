@@ -11,8 +11,8 @@ public class YTO_Page extends BasePage {
     By enterThis = By.xpath("(//a[@id='enter-orders'])[2]");
     By yto = By.xpath("(//li[@id='your-teacher-order'])[2]");
     By qtyBox = By.xpath("//input[@class='itm-qty-usd input-qty numericenteronly error']");
-    By qtyBox1 = By.xpath("//input[@data-itemid='1S4']");
-    By qtyBox2 = By.xpath("//input[@data-itemid='4S4']");
+    By qtyBox1 = By.xpath("//input[@data-itemid='1S5']");
+    By qtyBox2 = By.xpath("//input[@data-itemid='2S5']");
     By errorMsg = By.xpath("//div[@class='info-modal-hd']");
     By errorContent = By.xpath("//div[@class='info-modal-content']");
     By closeJumper = By.xpath("//i[@class='fa fa-times info-modal-close']");

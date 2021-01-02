@@ -15,9 +15,9 @@ public class SFO_Page extends BasePage {
     By itemNumber = By.xpath("//input[@id='item-number']");
     By addButton = By.xpath("//button[@id='btn-add']");
     By errorMsg = By.xpath("//span[@id='error-message-tooltip']");
-    By itemNum = By.xpath("//a[text()='35J3']");
-    By itemNum1 = By.xpath("//a[text()='16B3']");
-    By itemNum2 = By.xpath("//a[text()='74B4']");
+    By itemNum = By.xpath("//a[text()='12S5']");
+    By itemNum1 = By.xpath("//a[text()='10S5']");
+    By itemNum2 = By.xpath("//a[text()='2S5']");
     By nameHarry = By.xpath("(//td[@class=' studentName'])[2]");
     By reviewButton = By.xpath("//button[@class='secondary']");
     By qtyBox = By.xpath("(//input[@value='1'])[1]");
@@ -58,26 +58,25 @@ public class SFO_Page extends BasePage {
 
     public void selectItemAndQty() {
         scrollDown(350);
-        waitASec();
-        enterThis(itemNumber, "35J3");
+        enterThis(itemNumber, "12S5");
         clickThis(addButton);
-        waitASec();
-        enterThis(itemNumber, "16B3");
-        clickThis(addButton);
-        waitASec();
-        enterThis(itemNumber, "74B4");
+        enterThis(itemNumber, "10S5");
         clickThis(addButton);
         sleep();
+        moveToElement(itemNumber);
+        enterThis(itemNumber, "2S5");
+        clickThis(addButton);
+        sleep();
+        moveToElement(qtyBox);
         enterThis(qtyBox, "3");
         enterThis(qtyBox1, "2");
-        waitASec();
         enterThis(qtyBox2, "5");
     }
 
     public void verifyNameItemAdded() {
-        Assert.assertEquals(getText(itemNum), "35J3", "Not the same item");
-        Assert.assertEquals(getText(itemNum1), "16B3", "Not the same item");
-        Assert.assertEquals(getText(itemNum2), "74B4", "Not the same number");
+        Assert.assertEquals(getText(itemNum), "12S5", "Not the same item");
+        Assert.assertEquals(getText(itemNum1), "10S5", "Not the same item");
+        Assert.assertEquals(getText(itemNum2), "2S5", "Not the same number");
         Assert.assertEquals(getText(nameHarry), "Harry","Not the same student");
     }
 
@@ -91,10 +90,10 @@ public class SFO_Page extends BasePage {
         scrollDown(350);
         waitASec();
         enterThis(studentName, "Harry");
-        enterThis(itemNumber, "16B3");
+        enterThis(itemNumber, "10S5");
         clickThis(addButton);
         moveToElement(itemNumber);
-        enterThis(itemNumber, "35J3");
+        enterThis(itemNumber, "12S5");
         clickThis(addButton);
         sleep();
         enterThis(studentName, "John");

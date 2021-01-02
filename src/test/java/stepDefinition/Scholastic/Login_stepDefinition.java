@@ -158,7 +158,7 @@ public class Login_stepDefinition {
 
     @Then("^Verify correct student Name, Qty and Item number added under SFO$")
     public void verifyAddedItemQty() {
-       rPage.verifyStudentAndSFOTotal();
+       rPage.verifyAllAddedStudentsItemQty();
     }
 
     @When("^I click on Proceed to CheckOut$")
